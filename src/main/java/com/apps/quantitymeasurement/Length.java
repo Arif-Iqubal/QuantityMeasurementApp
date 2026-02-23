@@ -2,14 +2,15 @@ package com.apps.quantitymeasurement;
 
 public class Length {
 
-    // Instance variables
     private final double value;
     private final LengthUnit unit;
 
-    // Enum with base unit = Inches
+    // Enum with conversion factors to inches
     public enum LengthUnit {
         FEET(12.0),
-        INCHES(1.0);
+        INCHES(1.0),
+        YARDS(36.0),
+        CENTIMETERS(0.393701);
 
         private final double conversionFactor;
 
@@ -22,41 +23,39 @@ public class Length {
         }
     }
 
-    // Constructor
     public Length(double value, LengthUnit unit) {
         this.value = value;
         this.unit = unit;
     }
 
-    // Convert to base unit (inches)
+    // Convert to base unit (inches) and round to 2 decimal places
     private double convertToBaseUnit() {
-        return this.value * this.unit.getConversionFactor();
+        double result = this.value * this.unit.getConversionFactor();
+        return Math.round(result * 100.0) / 100.0;
     }
 
-    // Compare two Length objects
-    public boolean compare(Length thatLength) {
-        if (thatLength == null)
+    public boolean compare(Length other) {
+        if (other == null)
             return false;
 
         return Double.compare(
                 this.convertToBaseUnit(),
-                thatLength.convertToBaseUnit()
+                other.convertToBaseUnit()
         ) == 0;
     }
 
-    // Override equals()
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object obj) {
 
-        if (this == o)
+        if (this == obj)
             return true;
 
-        if (o == null || getClass() != o.getClass())
+        if (obj == null || getClass() != obj.getClass())
             return false;
 
-        Length that = (Length) o;
+        Length other = (Length) obj;
 
-        return compare(that);
+        return compare(other);
     }
 
     @Override
