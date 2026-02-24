@@ -41,7 +41,7 @@ public class Weight {
 	
 	//convertTo
 	public Weight convertTo(WeightUnit unit) {
-		double converted = ((this.value*this.weigthUnit.getConversion())/unit.getConversion());
+		double converted = ((this.value*this.weigthUnit.getConversionFactor())/unit.getConversionFactor());
 		return new Weight(converted,unit);
 	}
 	//add
@@ -58,13 +58,13 @@ public class Weight {
 	}
 	
 	private Weight addAndConvert(Weight weight, WeightUnit targetUnit) {
-		double baseValue = weight.value*weight.weigthUnit.getConversion();
+		double baseValue = weight.value*weight.weigthUnit.getConversionFactor();
 		double convertToBase = convertFromBaseToTargetUnit(baseValue, targetUnit);
 		return new Weight(convertToBase,targetUnit);
 	}
 	
 	private double convertFromBaseToTargetUnit(double values, WeightUnit targetUnit) {
-		return values/targetUnit.getConversion();
+		return values/targetUnit.getConversionFactor();
 	}
 
 	public static void main(String args[]) {

@@ -16,7 +16,7 @@ public class Length {
 	}
 	
 	public boolean compare(Length length) {
-		return Math.abs(this.len.ConvertToBaseUnit(this.value) - length.len.ConvertToBaseUnit(length.value)) < EPSILON;
+		return Math.abs(this.len.convertToBaseUnit(this.value) - length.len.convertToBaseUnit(length.value)) < EPSILON;
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class Length {
 	}
 
 	public Length convertTo(LengthUnit unit) {
-		double result = (this.value*len.getConversion())/unit.getConversion();
+		double result = (this.value*len.getConversionFactor())/unit.getConversionFactor();
 		return new Length(result,unit);
 	}
 	
@@ -54,13 +54,13 @@ public class Length {
 	}
 	
 	private Length addAndConvert(Length length, LengthUnit targetUnit) {
-		double baseValue = length.value*length.len.getConversion();
+		double baseValue = length.value*length.len.getConversionFactor();
 		double convertToBase = convertFromBaseToTargetUnit(baseValue, targetUnit);
 		return new Length(convertToBase,targetUnit);
 	}
 	
 	private double convertFromBaseToTargetUnit(double inches, LengthUnit targetUnit) {
-		return inches/targetUnit.getConversion();
+		return inches/targetUnit.getConversionFactor();
 	}
 	
 	public static void main(String args[]) {
