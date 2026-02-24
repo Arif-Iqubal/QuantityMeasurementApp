@@ -1,121 +1,98 @@
 package com.apps.quantitymeasurement;
 
 public class Length {
+	private double value;
+	private LengthUnit len;
+	private static final double EPSILON = 0.01;
+	
+	public enum LengthUnit{
+		FEET(12.0),
+		INCHES(1.0),
+		YARD(36.0),
+		CENTIMETERS(0.393701);
+		
+		private double conversion;
+		
+		LengthUnit(double conversion){
+			this.conversion = conversion;
+		}
+		
+		public double getConversion() {
+			return conversion;
+		}
+	}
+	
+	public Length(double value, LengthUnit len) {
+		if(Double.isNaN(value)) {
+			throw new IllegalArgumentException("Invalid value!");
+		}
+		this.value = value;
+		this.len = len;
+	}
+	
+	private double ConvertToBaseUnit() {
+		return ((this.value*this.len.getConversion())*100.0)/100.0;
+	}
+	
+	public boolean compare(Length len) {
+		return Math.abs(this.ConvertToBaseUnit() - len.ConvertToBaseUnit()) < EPSILON;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this==obj) {
+			return true;
+		}
+		
+		if(obj==null || obj.getClass()!=this.getClass()) {
+			return false;
+		}
+		
+		return this.compare((Length)obj);
+	}
+	
+	@Override
+	public String toString() {
+		return "Length [value=" + this.value + ", len=" + len + "]";
+	}
 
-    private final double value;
-    private final LengthUnit unit;
-
-    // ===============================
-    // ENUM (UNCHANGED FROM UC5)
-    // ===============================
-    public enum LengthUnit {
-
-        FEET(12.0),
-        INCHES(1.0),
-        YARDS(36.0),
-        CENTIMETERS(0.393701);
-
-        private final double conversionFactor;
-
-        LengthUnit(double conversionFactor) {
-            this.conversionFactor = conversionFactor;
-        }
-
-        public double getConversionFactor() {
-            return conversionFactor;
-        }
-    }
-
-    // ===============================
-    // CONSTRUCTOR (UNCHANGED)
-    // ===============================
-    public Length(double value, LengthUnit unit) {
-        if (unit == null) {
-            throw new IllegalArgumentException("Unit cannot be null");
-        }
-        this.value = value;
-        this.unit = unit;
-    }
-
-    // ===============================
-    // UC5 BASE CONVERSION (UNCHANGED)
-    // ===============================
-    private double convertToBaseUnit() {
-        double inches = this.value * this.unit.getConversionFactor();
-        return Math.round(inches * 100.0) / 100.0;
-    }
-
-    // ===============================
-    // UC5 BASE → TARGET (UNCHANGED)
-    // ===============================
-    private double convertFromBaseToTargetUnit(double lengthInInches, LengthUnit targetUnit) {
-        double value = lengthInInches / targetUnit.getConversionFactor();
-        return Math.round(value * 100.0) / 100.0;
-    }
-
-    // ===============================
-    // UC5 EQUALITY (UNCHANGED)
-    // ===============================
-    private boolean compare(Length thatLength) {
-        return this.convertToBaseUnit() == thatLength.convertToBaseUnit();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o)
-            return true;
-
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        Length that = (Length) o;
-        return compare(that);
-    }
-
-    @Override
-    public int hashCode() {
-        return Double.hashCode(convertToBaseUnit());
-    }
-
-    // ===============================
-    // UC5 CONVERSION (UNCHANGED)
-    // ===============================
-    public Length convertTo(LengthUnit targetUnit) {
-
-        if (targetUnit == null)
-            throw new IllegalArgumentException("Target unit cannot be null");
-
-        double inches = convertToBaseUnit();
-        double convertedValue = convertFromBaseToTargetUnit(inches, targetUnit);
-
-        return new Length(convertedValue, targetUnit);
-    }
-
-    // ==========================================================
-    // UC6 – ADDITION (NEW METHOD – DOES NOT MODIFY OLD LOGIC)
-    // ==========================================================
-    public Length add(Length thatLength) {
-
-        if (thatLength == null)
-            throw new IllegalArgumentException("Length to add cannot be null");
-
-        // Convert both to base unit (inches)
-        double thisInches = this.convertToBaseUnit();
-        double thatInches = thatLength.convertToBaseUnit();
-
-        // Add
-        double sumInches = thisInches + thatInches;
-
-        // Convert back to THIS object's unit
-        double resultValue =
-                convertFromBaseToTargetUnit(sumInches, this.unit);
-
-        return new Length(resultValue, this.unit);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%.2f %s", value, unit);
-    }
+	public Length convertTo(LengthUnit unit) {
+		double result = (this.value*len.getConversion())/unit.getConversion();
+		return new Length(result,unit);
+	}
+	
+	public Length add(Length l1) {
+		l1 = l1.convertTo(this.len);
+		return new Length(this.value+l1.value,this.len);
+	}
+	
+	public Length add(Length l1, LengthUnit unit) {
+		Length length1 = addAndConvert(l1,unit);
+		Length length2 = addAndConvert(this, len);
+		return length1.add(length2);
+	}
+	
+	private Length addAndConvert(Length length, LengthUnit targetUnit) {
+		double baseValue = length.value*length.len.getConversion();
+		double convertToBase = convertFromBaseToTargetUnit(baseValue, targetUnit);
+		return new Length(convertToBase,targetUnit);
+	}
+	
+	private double convertFromBaseToTargetUnit(double inches, LengthUnit targetUnit) {
+		return inches/targetUnit.getConversion();
+	}
+	
+	public static void main(String args[]) {
+		Length len1 = new Length(1,Length.LengthUnit.INCHES);
+		Length len2 = new Length(1,Length.LengthUnit.INCHES);
+		System.out.println(len1.equals(len2));
+		
+		Length len3 = new Length(1.0,Length.LengthUnit.YARD);
+		Length len4 = new Length(36.0,Length.LengthUnit.INCHES);
+		System.out.println(len3.equals(len4));
+		
+		Length len5 = new Length(100.0,Length.LengthUnit.CENTIMETERS);
+		Length len6 = new Length(39.37,Length.LengthUnit.INCHES);
+		System.out.println(len5.equals(len6));
+	}
 }
