@@ -20,4 +20,4 @@ Extended UC1 to support equality comparison for both Feet and Inches measurement
 - Understood the need for a better design using a common `Quantity` class or unit parameterization
 
 <br>🔗 Code Link:
-[UC2: Feet and Inches Measurement Equality]()
+[UC2: Feet and Inches Measurement Equality](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC2-InchEquality)
