@@ -61,7 +61,7 @@ Implemented equality comparison for two feet measurement values using proper obj
 - Improved knowledge of immutability, null safety, and clean OOP design in Java
 
 <br>🔗 Code Link:
-[UC1: Feet Measurement Equality](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC1-FeetEquality)
+[UC1: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC1-FeetEquality)
 
 
 ### UC2: Feet and Inches Measurement Equality
@@ -86,7 +86,7 @@ Extended UC1 to support equality comparison for both Feet and Inches measurement
 - Understood the need for a better design using a common `Quantity` class or unit parameterization
 
 <br>🔗 Code Link:
-[UC2: Feet and Inches Measurement Equality](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC2-InchEquality)
+[UC2: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC2-InchEquality)
 
 
 ### UC3: Generic Quantity Class (DRY Principle Implementation)
@@ -111,7 +111,7 @@ Refactored separate `Feet` and `Inches` classes into a single generic `QuantityL
 - Improved maintainability and reduced risk of inconsistent logic
 
 <br>🔗 Code Link:
-[ UC3: Generic Quantity Class](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC3-GenericQuantityClassForDRYPrinciple)
+[ UC3: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC3-GenericQuantityClassForDRYPrinciple)
 
 
 
@@ -137,7 +137,7 @@ Extended the generic `QuantityLength` class to support YARDS and CENTIMETERS, pr
 - Maintained backward compatibility with all previous test cases
 
 <br>🔗 Code Link:
-[ UC4: Extended Unit Support](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC4-ExtendedUnitSupport)
+[ UC4: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC4-ExtendedUnitSupport)
 
 
 
@@ -164,7 +164,7 @@ Enhanced the `QuantityLength` API to support explicit unit-to-unit conversion (e
 - Enhanced usability with overloaded methods and clear documentation
 
 <br>🔗 Code Link:
-[UC5: Unit-to-Unit Conversion](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC5-Unit-to-UnitConversion)
+[UC5: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC5-Unit-to-UnitConversion)
 
 
 ### UC6: Addition of Two Length Units (Same Category)
@@ -190,7 +190,7 @@ Extended the `QuantityLength` API to support addition of two length measurements
 - Ensured backward compatibility with UC1–UC5
 
 <br>🔗 Code Link:
-[UC6: Addition of Two Length Units](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC6-Addition-Of-Two-Length-Units)
+[UC6: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC6-Addition-Of-Two-Length-Units)
 
 
 ### UC7: Addition with Target Unit Specification
@@ -216,7 +216,7 @@ Enhanced the `QuantityLength` API to support addition with an explicitly specifi
 - Maintained thread-safety and immutability of value objects
 
 <br>🔗 Code Link:
-[ Addition with Target Unit Specification](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC7-Addition-With-Target-Unit-Specification)
+[ UC7 : Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC7-Addition-With-Target-Unit-Specification)
 
 
 
@@ -244,7 +244,7 @@ Refactored `LengthUnit` from a nested enum inside `QuantityLength` to a standalo
 - Successfully refactored without breaking existing APIs or test suites
 
 <br>🔗 Code Link:
-[UC8: Refactoring Unit Enum to Standalone with Conversion Responsibility](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC8-Refactoring-Unit-Enum-To-Standalone)
+[UC8: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC8-Refactoring-Unit-Enum-To-Standalone)
 
 
 
@@ -273,7 +273,7 @@ Extended the Quantity Measurement Application to support a new measurement categ
 - Confirmed architectural readiness for future categories (Volume, Temperature, etc.)
 
 <br>🔗 Code Link:
-[UC9: Weight Measurement Equality, Conversion, and Addition (Kilogram, Gram, Pound)](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC9-Weight-Measurement)
+[UC9: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC9-Weight-Measurement)
 
 
 
@@ -301,7 +301,7 @@ Refactored the architecture to introduce a single generic `Quantity<U extends IM
 - Validated performance neutrality with no runtime overhead from generics
 
 <br>🔗 Code Link:
-[ UC10: Generic Quantity Class with Unit Interface (Multi-Category Support)](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC10-Generic-Quantity-Class-with-Unit-Interface-For-Multi-Category-Support)
+[ UC10: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC10-Generic-Quantity-Class-with-Unit-Interface-For-Multi-Category-Support)
 
 
 
@@ -330,4 +330,43 @@ Extended the generic `Quantity<U extends IMeasurable>` architecture to support a
 - Established repeatable pattern for adding future categories (Temperature, Time, etc.)
 
 <br>🔗 Code Link:
-[UC11: Volume Measurement Equality](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC11-Volume-Measurement-Equality-Conversion-and-Addition)
+[UC11: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC11-Volume-Measurement-Equality-Conversion-and-Addition)
+
+
+### UC12: Subtraction and Division Operations on Quantity Measurements
+📅 (Date: 26-Feb-2026)
+
+Extended the generic `Quantity<U extends IMeasurable>` architecture to support **Subtraction** and **Division** across all measurement categories (Length, Weight, Volume).
+
+<br>Covered:
+- Implemented overloaded `subtract()` methods  
+  - Implicit target unit (first operand’s unit)  
+  - Explicit target unit specification  
+- Implemented `divide()` method returning a dimensionless scalar (double)  
+- Enabled cross-unit arithmetic (e.g., feet − inches, kg − grams, litre − mL)  
+- Normalized operands through base unit before arithmetic  
+- Added strict validation (null checks, finiteness, cross-category prevention)  
+- Prevented division by zero (throws `ArithmeticException`)  
+- Preserved immutability (operations return new objects)  
+- Maintained rounding consistency (2 decimal places for Quantity results)  
+- Verified non-commutativity of subtraction and division  
+- Ensured compatibility with addition, equality, and conversion  
+
+<br>Outcome:
+- Quantity system now supports full arithmetic set: **add, subtract, divide**
+- Generic design required **no structural refactoring**
+- Architecture scales seamlessly across Length, Weight, and Volume
+- SOLID principles maintained (SRP, OCP, DRY intact)
+- Cross-category operations safely rejected at compile-time + runtime
+- Demonstrated mathematical correctness (identity, inverse, non-commutativity)
+- Confirmed immutability and functional-style operations
+- Strengthened validation and fail-fast error handling
+
+<br>🔎 SOLID / Design Validation:
+- ✅ SRP maintained (Quantity handles arithmetic only)
+- ✅ OCP maintained (new operations added without modifying enums)
+- ✅ DRY preserved (shared base-unit normalization logic reused)
+- ⚠️ Minor Improvement Area: If arithmetic logic grows further, extract shared private helper for base-unit arithmetic to avoid future duplication.
+
+<br>🔗 Code Link:
+[UC12 : Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC12-Subtraction-and-Division-Operations-on-Quantity-Measurements)
