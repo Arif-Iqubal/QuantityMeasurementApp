@@ -1,21 +1,21 @@
 package com.apps.quantitymeasurement;
 
-public enum WeightUnit implements IMeasurable{
+public enum WeightUnit implements IMeasurable {
 	KILOGRAM(1.0),
-    // 1 Gram = 0.001 Kilograms
-    GRAM(0.001),
-    // 1 Pound = 0.453592 Kilograms
-    POUND(0.453592);
-	
+	// 1 Gram = 0.001 Kilograms
+	GRAM(0.001),
+	// 1 Pound = 0.453592 Kilograms
+	POUND(0.453592);
+
 	private double conversion;
-	
-	WeightUnit(double conversion){
+
+	WeightUnit(double conversion) {
 		this.conversion = conversion;
 	}
-	
+
 	@Override
 	public double convertToBaseUnit(double value) {
-		return ((value*this.getConversionFactor())*100.0)/100.0;
+		return ((value * this.getConversionFactor()) * 100.0) / 100.0;
 	}
 
 	@Override
@@ -23,10 +23,9 @@ public enum WeightUnit implements IMeasurable{
 		return conversion;
 	}
 
-
 	@Override
 	public double convertFromBaseUnit(double baseValue) {
-		return baseValue/this.getConversionFactor();
+		return baseValue / this.getConversionFactor();
 	}
 
 	@Override
