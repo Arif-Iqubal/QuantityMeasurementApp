@@ -1020,5 +1020,4 @@ class QuantityMeasurementMainTest<U extends IMeasurable> {
 		assertTrue(q1.equals(new Quantity<>(10.0, LengthUnit.FEET)));
 		assertTrue(q2.equals(new Quantity<>(5.0, LengthUnit.FEET)));
 	}
-
 }
