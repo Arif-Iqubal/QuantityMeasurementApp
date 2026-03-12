@@ -1,3 +1,4 @@
+
 package com.apps.quantitymeasurement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,6 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import com.apps.quantitymeasurement.exception.InvalidUnitMeasurementException;
+import com.apps.quantitymeasurement.quantity.Quantity;
+import com.apps.quantitymeasurement.unit.IMeasurable;
+import com.apps.quantitymeasurement.unit.LengthUnit;
+import com.apps.quantitymeasurement.unit.TemperatureUnit;
+import com.apps.quantitymeasurement.unit.VolumeUnit;
+import com.apps.quantitymeasurement.unit.WeightUnit;
 
 class QuantityMeasurementMainTest<U extends IMeasurable> {
 
@@ -19,6 +27,9 @@ class QuantityMeasurementMainTest<U extends IMeasurable> {
 
 	Quantity<VolumeUnit> v1;
 	Quantity<VolumeUnit> v2;
+
+	Quantity<TemperatureUnit> t1;
+	Quantity<TemperatureUnit> t2;
 
 	@Test
 	public void testEquality_SameUnitAndValue_ShouldReturnTrue() throws InvalidUnitMeasurementException {
@@ -1019,5 +1030,67 @@ class QuantityMeasurementMainTest<U extends IMeasurable> {
 
 		assertTrue(q1.equals(new Quantity<>(10.0, LengthUnit.FEET)));
 		assertTrue(q2.equals(new Quantity<>(5.0, LengthUnit.FEET)));
+	}
+
+	// uc14
+
+	@Test
+	public void testTemperatureEquality_CelsiusToCelsius_SameValue() {
+		t1 = new Quantity<TemperatureUnit>(10.0, TemperatureUnit.CELSIUS);
+		t2 = new Quantity<TemperatureUnit>(10.0, TemperatureUnit.CELSIUS);
+		assertTrue(t1.equals(t2));
+	}
+
+	@Test
+	public void testTemperatureEquality_FahrenheitToFahrenheit_SameValue() {
+		t1 = new Quantity<TemperatureUnit>(10.0, TemperatureUnit.FAHRENHEIT);
+		t2 = new Quantity<TemperatureUnit>(10.0, TemperatureUnit.FAHRENHEIT);
+		assertTrue(t1.equals(t2));
+	}
+
+	@Test
+	public void testTemperatureEquality_CelsiusToFahrenheit_0Celsius32Fahrenheit() {
+		assertTrue(
+				new Quantity<>(0.0, TemperatureUnit.CELSIUS).equals(new Quantity<>(32.0, TemperatureUnit.FAHRENHEIT)));
+	}
+
+	@Test
+	public void testTemperatureEquality_CelsiusToFahrenheit_100Celsius212Fahrenheit() {
+		assertTrue(new Quantity<>(100.0, TemperatureUnit.CELSIUS)
+				.equals(new Quantity<>(212.0, TemperatureUnit.FAHRENHEIT)));
+	}
+
+	@Test
+	public void testTemperatureEquality_CelsiusToFahrenheit_Negative40Equal() {
+		assertTrue(new Quantity<>(-40.0, TemperatureUnit.CELSIUS)
+				.equals(new Quantity<>(-40.0, TemperatureUnit.FAHRENHEIT)));
+	}
+
+	@Test
+	public void testTemperatureEquality_SymmetricProperty() {
+		t1 = new Quantity<TemperatureUnit>(37.0, TemperatureUnit.CELSIUS);
+		t2 = new Quantity<TemperatureUnit>(98.6, TemperatureUnit.FAHRENHEIT);
+		assertTrue(t1.equals(t2));
+		assertTrue(t2.equals(t1));
+	}
+
+	@Test
+	public void testTemperatureEquality_ReflexiveProperty() {
+		t1 = new Quantity<TemperatureUnit>(37.0, TemperatureUnit.CELSIUS);
+		assertTrue(t1.equals(t1));
+	}
+
+	@Test
+	public void testTemperatureConversion_CelsiusToFahrenheit_VariousValues() throws InvalidUnitMeasurementException {
+		t1 = new Quantity<TemperatureUnit>(50.0, TemperatureUnit.CELSIUS);
+		t2 = QuantityMeasurementApp.demonstrateConversion(t1, TemperatureUnit.FAHRENHEIT);
+		assertTrue(t2.equals(new Quantity<TemperatureUnit>(122.0, TemperatureUnit.FAHRENHEIT)));
+	}
+
+	@Test
+	public void testTemperatureConversion_FahrenheitToCelsius_VariousValues() throws InvalidUnitMeasurementException {
+		t1 = new Quantity<TemperatureUnit>(50.0, TemperatureUnit.CELSIUS);
+		t2 = QuantityMeasurementApp.demonstrateConversion(t1, TemperatureUnit.CELSIUS);
+		assertTrue(t2.equals(new Quantity<TemperatureUnit>(50.0, TemperatureUnit.CELSIUS)));
 	}
 }
