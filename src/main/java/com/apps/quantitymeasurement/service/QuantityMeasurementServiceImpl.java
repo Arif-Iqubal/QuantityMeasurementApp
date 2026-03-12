@@ -244,9 +244,8 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 		return new QuantityModel<>(dto.getValue(), unit);
 	}
 
-	/**
-	 * Validation logic as requested in the flow diagram
-	 */
+	// Validation logic as requested in the flow diagram
+
 	private void validateModels(QuantityModel<?> m1, QuantityModel<?> m2) {
 		if (m1 == null || m2 == null)
 			throw new IllegalArgumentException("Operands cannot be null");
