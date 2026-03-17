@@ -1,6 +1,8 @@
 
 package com.apps.quantitymeasurement.service;
 
+import java.util.logging.Logger;
+
 import com.apps.quantitymeasurement.entity.QuantityDTO;
 import com.apps.quantitymeasurement.entity.QuantityMeasurementEntity;
 import com.apps.quantitymeasurement.entity.QuantityModel;
@@ -15,10 +17,14 @@ import com.apps.quantitymeasurement.unit.WeightUnit;
 public class QuantityMeasurementServiceImpl implements IQuantityMeasurementService {
 
 	private IQuantityMeasurementRepository repository;
+	
+	//Logger for logginf information and errors
+	private static final Logger logger = Logger.getLogger(QuantityMeasurementServiceImpl.class.getName());
 
 	// constructor
 	public QuantityMeasurementServiceImpl(IQuantityMeasurementRepository repository) {
 		this.repository = repository;
+		logger.info("QuanitityMeasurementServiceImpl init with repository: " + repository.getClass().getSimpleName());
 	}
 
 	@Override

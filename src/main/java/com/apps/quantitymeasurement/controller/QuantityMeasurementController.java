@@ -1,10 +1,14 @@
 package com.apps.quantitymeasurement.controller;
 
+import java.util.logging.Logger;
+
 import com.apps.quantitymeasurement.entity.QuantityDTO;
 import com.apps.quantitymeasurement.service.IQuantityMeasurementService;
 import com.apps.quantitymeasurement.service.QuantityMeasurementServiceImpl;
 
 public class QuantityMeasurementController {
+	//Logger for logging information and errors in the controller
+	private static final Logger logger = Logger.getLogger(QuantityMeasurementController.class.getName());
 
 	// Private Instance of IQuantityMeasurementService interface
 	private IQuantityMeasurementService quantityMeasurementService;
@@ -12,6 +16,7 @@ public class QuantityMeasurementController {
 	// Parameterized Constructor
 	public QuantityMeasurementController(QuantityMeasurementServiceImpl quantityMeasurementService) {
 		this.quantityMeasurementService = quantityMeasurementService;
+		logger.info("QauntityMeasurementController initialized with service: " + quantityMeasurementService);
 	}
 
 	// Method to perform comparison that call compare service

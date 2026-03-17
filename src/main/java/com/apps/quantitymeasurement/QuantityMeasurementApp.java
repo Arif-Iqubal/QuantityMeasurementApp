@@ -106,4 +106,12 @@ public class QuantityMeasurementApp {
 		System.out.println(result);
 		System.out.println(inchToFeet);
 	}
+
+	public QuantityMeasurementController getController() {
+		return controller;
+	}
+
+	public IQuantityMeasurementRepository getRepository() {
+		return repository;
+	}
 }

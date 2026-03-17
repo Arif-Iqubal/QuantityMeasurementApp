@@ -79,6 +79,9 @@ public class QuantityMeasurementEntity implements java.io.Serializable {
 		this.isError = isError;
 	}
 
+	public QuantityMeasurementEntity() {
+	}
+
 	/*
 	 * Common initializer used by constructors
 	 */
@@ -135,5 +138,117 @@ public class QuantityMeasurementEntity implements java.io.Serializable {
 				"COMPARE", "Equal");
 		System.out.println(entity);
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public double getThisValue() {
+		return thisValue;
+	}
+
+	public String getThisUnit() {
+		return thisUnit;
+	}
+
+	public String getThisMeasurementType() {
+		return thisMeasurementType;
+	}
+
+	public double getThatValue() {
+		return thatValue;
+	}
+
+	public String getThatUnit() {
+		return thatUnit;
+	}
+
+	public String getThatMeasurementType() {
+		return thatMeasurementType;
+	}
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public double getResultValue() {
+		return resultValue;
+	}
+
+	public String getResultUnit() {
+		return resultUnit;
+	}
+
+	public String getResultMeasurementType() {
+		return resultMeasurementType;
+	}
+
+	public String getResultString() {
+		return resultString;
+	}
+
+	public boolean isError() {
+		return isError;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setThisValue(double thisValue) {
+		this.thisValue = thisValue;
+	}
+
+	public void setThisUnit(String thisUnit) {
+		this.thisUnit = thisUnit;
+	}
+
+	public void setThisMeasurementType(String thisMeasurementType) {
+		this.thisMeasurementType = thisMeasurementType;
+	}
+
+	public void setThatValue(double thatValue) {
+		this.thatValue = thatValue;
+	}
+
+	public void setThatUnit(String thatUnit) {
+		this.thatUnit = thatUnit;
+	}
+
+	public void setThatMeasurementType(String thatMeasurementType) {
+		this.thatMeasurementType = thatMeasurementType;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public void setResultValue(double resultValue) {
+		this.resultValue = resultValue;
+	}
+
+	public void setResultUnit(String resultUnit) {
+		this.resultUnit = resultUnit;
+	}
+
+	public void setResultMeasurementType(String resultMeasurementType) {
+		this.resultMeasurementType = resultMeasurementType;
+	}
+
+	public void setResultString(String resultString) {
+		this.resultString = resultString;
+	}
+
+	public void setError(boolean isError) {
+		this.isError = isError;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+	
+	
+	
+	
 
 }
