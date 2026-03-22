@@ -42,7 +42,7 @@ public class QuantityMeasurementCacheRepository implements IQuantityMeasurementR
 	private static final Logger logger = Logger.getLogger(QuantityMeasurementCacheRepository.class.getName());
 
 	// Private constructor to prevent instantiation from outside the class
-	private QuantityMeasurementCacheRepository() {
+	QuantityMeasurementCacheRepository() {
 		// Initialize the in-memory cache
 		quantityMeasurementEntityCache = new java.util.ArrayList<>();
 		// Load any existing data from disk
