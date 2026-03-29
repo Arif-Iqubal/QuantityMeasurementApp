@@ -700,7 +700,9 @@ Implemented secure user authentication and management in the Quantity Measuremen
 
 
 <br>
-## 🔧 Covered:
+
+##  🔧 Covered:
+
 - Designed `User` entity with fields like username, email, password, and role  
 - Implemented `UserController` for user registration and login using JWT  
 - Created `GoogleAuthController` to handle Google OAuth2 login flow  
@@ -718,7 +720,9 @@ Implemented secure user authentication and management in the Quantity Measuremen
 ---
 
 <br>
-## 🎯Outcome:
+
+##  🎯Outcome:
+
 - Successfully integrated **JWT-based authentication** with **Google OAuth2 login**  
 - Achieved secure and scalable user management system  
 - Gained deep understanding of Spring Security filter chain and authentication mechanisms  
