@@ -1,47 +1,42 @@
-## 🚀 UC17: Spring Boot REST API Integration
+### UC18: Google Authentication and User Management for Quantity Measurement  
+📅 (Date: 29-Mar-2026)
 
-📅 Date: 24-Mar-2026  
-
-Upgraded the **Quantity Measurement Application** to a **Spring Boot REST API**, replacing JDBC with **Spring Data JPA** for a scalable, enterprise-ready backend.
-
----
-
-## 🔧 Key Enhancements
-
-- **Spring Boot** – Auto-config + embedded server  
-- **REST APIs** – `@RestController`, JSON support  
-- **Spring Data JPA** – Replaced JDBC, auto CRUD & queries  
-- **Service Layer** – `@Service` with DI  
-- **DTO + Validation** – Clean API contracts  
-- **Global Exception Handling** – `@ControllerAdvice`  
-- **Swagger** – API documentation  
-- **Actuator** – Health & metrics  
+Implemented secure user authentication and management in the Quantity Measurement Spring Boot application using **Spring Security with JWT and OAuth2 (Google Login)**.
 
 ---
 
-## 🎯 Outcome
 
-- Scalable RESTful backend  
-- Reduced boilerplate code  
-- Improved maintainability  
-- Production-ready architecture  
+<br>
+
+##  🔧 Covered:
+
+- Designed `User` entity with fields like username, email, password, and role  
+- Implemented `UserController` for user registration and login using JWT  
+- Created `GoogleAuthController` to handle Google OAuth2 login flow  
+- Configured Spring Security using `SecurityConfig` for both JWT and OAuth2 authentication  
+- Integrated Google OAuth2 login using `spring.security.oauth2.client.registration.google`  
+- Generated JWT tokens using `JwtService` after successful authentication  
+- Implemented `JwtFilter` to validate JWT in every request  
+- Developed `CustomUserDetailsService` for loading user details from database  
+- Created DTOs (`RegisterRequest`, `LoginRequest`, `AuthResponse`) for structured data handling  
+- Applied password encryption using `BCryptPasswordEncoder`  
+- Handled unauthorized access using `JwtAuthenticationEntryPoint` and custom exceptions  
+- Maintained stateless session using JWT with Spring Security filters  
+- Tested authentication flows using Swagger and Postman  
 
 ---
 
-## 🧪 Testing
+<br>
 
-- `@WebMvcTest` (Controller)  
-- `@SpringBootTest` (Integration)  
-- Mockito for mocking  
+##  🎯Outcome:
+
+- Successfully integrated **JWT-based authentication** with **Google OAuth2 login**  
+- Achieved secure and scalable user management system  
+- Gained deep understanding of Spring Security filter chain and authentication mechanisms  
+- Enabled both traditional login and third-party login (Google) in a single application  
+- Built a production-ready authentication system for REST APIs  
 
 ---
 
-## 🚀 Commands
-
-```bash
-mvn spring-boot:run
-mvn clean test
-```
-### 🔗 Code Link
-
-[Source Code - UC17](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC17-Spring-Backend-for-Quantity-Measurement/QuantityMeasurementApp)
+<br>🔗 Code Link:  
+[UC18: Source Code](https://github.com/Arif-Iqubal/QuantityMeasurementApp/tree/feature/UC18-Google-Authnetication-and-User-Management-for-Quantity-Measurement/QuantityMeasurementApp/src)
