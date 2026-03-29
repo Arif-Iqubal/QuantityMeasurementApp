@@ -1,12 +1,11 @@
 package com.app.quantitymeasurementapp.service;
 
-import com.app.quantitymeasurementapp.model.QuantityDTO;
-import com.app.quantitymeasurementapp.model.QuantityMeasurementEntity;
-
 import org.springframework.stereotype.Service;
 
-import com.app.quantitymeasurementapp.entity.QuantityMeasurementDTO;
-import com.app.quantitymeasurementapp.entity.QuantityModel;
+import com.app.quantitymeasurementapp.dto.QuantityDTO;
+import com.app.quantitymeasurementapp.dto.QuantityMeasurementDTO;
+import com.app.quantitymeasurementapp.dto.QuantityModel;
+import com.app.quantitymeasurementapp.entity.QuantityMeasurementEntity;
 import com.app.quantitymeasurementapp.exception.CategoryMismatchException;
 import com.app.quantitymeasurementapp.exception.InvalidUnitException;
 import com.app.quantitymeasurementapp.exception.InvalidUnitMeasurementException;
@@ -56,13 +55,12 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 
 		// 4. Use the equals method from Quantity.java
 		boolean isEqual = Double.compare(val1, val2) == 0;
-		String resultString = String.valueOf(isEqual);
 
 		// 5. Save to Repository
 		QuantityMeasurementEntity entity = new QuantityMeasurementEntity(thisQuantityDTO.value, thisQuantityDTO.unit,
 				thisQuantityDTO.measurementType, thatQuantityDTO.value, thatQuantityDTO.unit,
 				thatQuantityDTO.measurementType, Operation.COMPARE.name(), isEqual ? 1.0 : 0.0, thisQuantityDTO.unit,
-				thisQuantityDTO.measurementType, resultString, false, "null");
+				thisQuantityDTO.measurementType, "null", false, "null");
 		repository.save(entity);
 
 		return new QuantityMeasurementDTO().from(entity);
