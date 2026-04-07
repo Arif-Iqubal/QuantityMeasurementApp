@@ -136,6 +136,11 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 
 	@Override
 	public List<QuantityMeasurementDTO> getErrorHistory() {
+		  System.out.println("🔥 Fetching errored history");
+
+		    List<?> data = repository.findAll(); // your method
+
+		    System.out.println("🔥 Data: " + data);
 		return new QuantityMeasurementDTO().fromList(repository.findAll());
 	}
 
