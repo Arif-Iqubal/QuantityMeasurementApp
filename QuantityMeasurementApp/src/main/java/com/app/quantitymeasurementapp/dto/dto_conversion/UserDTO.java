@@ -6,6 +6,6 @@ import com.app.quantitymeasurementapp.entity.User;
 public class UserDTO {
 	public User toUser(RegisterRequest registerRequest) {
 		return new User(registerRequest.getUsername(), registerRequest.getEmail(), registerRequest.getPassword(),
-				registerRequest.getRole());
+				"USER");
 	}
 }
