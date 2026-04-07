@@ -58,6 +58,7 @@ public class JwtFilter extends OncePerRequestFilter {
 				}
 			}
 		} catch (Exception e) {
+			 e.printStackTrace();
 			log.warn("Unauthorized attempt: {}", e.getMessage());
 		}
 		filterChain.doFilter(request, response);
