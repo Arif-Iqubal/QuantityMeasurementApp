@@ -23,7 +23,7 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	private String role;
+	private String role = "USER";
 
 	public User(String username, String email, String password, String role) {
 		this.username = username;
