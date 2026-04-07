@@ -2,6 +2,7 @@
 package com.app.quantitymeasurementapp.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.logging.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/v1/quantities")
 @Tag(name = "Quantity Measurements", description = "REST API for quantity measurement operations")
 public class QuantityMeasurementController {
@@ -176,9 +178,19 @@ public class QuantityMeasurementController {
 		return ResponseEntity.ok(quantityMeasurementService.getOperationCount(operation));
 	}
 
+//	@GetMapping("/history/errored")
+//	@Operation(summary = "Get errored operations history")
+//	public ResponseEntity<List<QuantityMeasurementDTO>> getErroredOperations() {
+//		return ResponseEntity.ok(quantityMeasurementService.getErrorHistory());
+//	}
 	@GetMapping("/history/errored")
-	@Operation(summary = "Get errored operations history")
-	public ResponseEntity<List<QuantityMeasurementDTO>> getErroredOperations() {
-		return ResponseEntity.ok(quantityMeasurementService.getErrorHistory());
+	public ResponseEntity<?> getErroredHistory() {
+	    System.out.println("🔥 API HIT: history/errored");
+	    return ResponseEntity.ok(quantityMeasurementService.getErrorHistory());
 	}
+//	@GetMapping("/history/errored")
+//	public ResponseEntity<?> getErroredHistory() {
+//	    System.out.println("🔥 History API called");
+//	    return ResponseEntity.ok(quantityMeasurementService.getErrorHistory());
+//	}
 }
