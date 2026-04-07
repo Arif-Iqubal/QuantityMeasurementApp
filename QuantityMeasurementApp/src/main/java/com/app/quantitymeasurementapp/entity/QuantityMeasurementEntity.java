@@ -93,6 +93,11 @@ public class QuantityMeasurementEntity {
 	/*
 	 * Arithmetic Operation Example: 1 ft + 12 in = 2 ft
 	 */
+	
+	public QuantityMeasurementEntity() {
+		
+	}
+	
 	public QuantityMeasurementEntity(double thisValue, String thisUnit, String thisMeasurementType, double thatValue,
 			String thatUnit, String thatMeasurementType, String operation, double resultValue, String resultUnit,
 			String resultMeasurementType) {
