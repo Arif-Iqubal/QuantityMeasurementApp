@@ -34,6 +34,7 @@ public class UserService {
 		}
 
 		registerRequest.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+	   
 		userRepository.save(new UserDTO().toUser(registerRequest));
 		String token = jwtService.genrateToken(registerRequest.getEmail());
 		return new AuthResponse(token, "User Register success");
