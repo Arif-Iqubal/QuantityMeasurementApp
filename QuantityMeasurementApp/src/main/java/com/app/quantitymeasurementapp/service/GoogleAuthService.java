@@ -67,7 +67,7 @@ public class GoogleAuthService {
 			params.add("code", code);
 			params.add("client_id", clientId);
 			params.add("client_secret", clientSecret);
-			params.add("redirect_uri", "https://developers.google.com/oauthplayground");
+			params.add("redirect_uri", "http://localhost:8080/auth/google/callback");
 			params.add("grant_type", "authorization_code");
 
 			HttpHeaders headers = new HttpHeaders();
