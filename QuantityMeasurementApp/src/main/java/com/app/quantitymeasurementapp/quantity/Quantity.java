@@ -88,7 +88,8 @@ public class Quantity<U extends IMeasurable> {
 		}
 		this.validateArithmeticOperands(other, null, false);
 		double baseResult = performBaseArithmetic(other, ArithmeticOperation.DIVIDE);
-		return this.unit.convertFromBaseUnit(baseResult);
+//		return this.unit.convertFromBaseUnit(baseResult);
+		return baseResult;
 	}
 
 	// equals

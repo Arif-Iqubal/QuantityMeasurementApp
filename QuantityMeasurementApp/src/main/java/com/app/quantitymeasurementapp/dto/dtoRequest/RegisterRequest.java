@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class RegisterRequest {
 	@NotNull(message = "userName null not allowed")
 	private String username;

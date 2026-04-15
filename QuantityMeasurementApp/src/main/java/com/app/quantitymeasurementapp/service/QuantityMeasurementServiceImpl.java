@@ -54,7 +54,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 		double val2 = q2.convertTo(q1.getUnit());
 
 		// 4. Use the equals method from Quantity.java
-		boolean isEqual = Double.compare(val1, val2) == 0;
+		boolean isEqual = q1.equals(q2);
 
 		// 5. Save to Repository
 		QuantityMeasurementEntity entity = new QuantityMeasurementEntity(thisQuantityDTO.value, thisQuantityDTO.unit,
@@ -80,7 +80,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
 		// 4. save to repository
 		QuantityMeasurementEntity entity = new QuantityMeasurementEntity(thisQuantityDTO.value, thisQuantityDTO.unit,
 				thisQuantityDTO.measurementType, thatQuantityDTO.value, thatQuantityDTO.unit,
-				thatQuantityDTO.measurementType, Operation.CONVERT.name(), value1, thisQuantityDTO.unit,
+				thatQuantityDTO.measurementType, Operation.CONVERT.name(), value1, m2.getUnit().toString(),
 				thisQuantityDTO.measurementType, "null", false, "null");
 
 		repository.save(entity);

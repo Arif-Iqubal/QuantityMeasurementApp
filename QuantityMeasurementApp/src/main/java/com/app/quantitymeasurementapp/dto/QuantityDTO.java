@@ -17,7 +17,6 @@ interface IMeasurableUnit {
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Schema(description = "A quantity with a value and unit")
 public class QuantityDTO {
 
@@ -25,7 +24,7 @@ public class QuantityDTO {
 	private static final Logger logger = Logger.getLogger(QuantityDTO.class.getName());
 
 	enum LengthUnit implements IMeasurableUnit {
-		FEET, INCHES, YARD, CENTIMETRE;
+		FEET, INCHES, YARDS, CENTIMETERS;
 
 		@Override
 		public String getUnitName() {
@@ -40,7 +39,7 @@ public class QuantityDTO {
 	}
 
 	enum WeightUnit implements IMeasurableUnit {
-		KG, GRAM, POUND;
+		KILOGRAM, GRAM, POUND;
 
 		@Override
 		public String getUnitName() {
@@ -53,8 +52,8 @@ public class QuantityDTO {
 		}
 	}
 
-	enum VolumneUnit implements IMeasurableUnit {
-		MILILITRE, LITRE, GALLON;
+	enum VolumeUnit implements IMeasurableUnit {
+		MILLILITRE, LITRE, GALLON;
 
 		@Override
 		public String getUnitName() {
@@ -114,7 +113,7 @@ public class QuantityDTO {
 				LengthUnit.valueOf(unit);
 				break;
 			case "VolumeUnit":
-				VolumneUnit.valueOf(unit);
+				VolumeUnit.valueOf(unit);
 				break;
 			case "WeightUnit":
 				WeightUnit.valueOf(unit);

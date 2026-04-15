@@ -11,8 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class QuantityMeasurementDTO {
 	public double thisValue;
 	public String thisUnit;

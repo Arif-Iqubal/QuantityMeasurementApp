@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Schema(example = """
 		{
 			"thisQuantityDTO":{ "value": 1.0, "unit": "FEET", "measurementType": "LengthUnit" },

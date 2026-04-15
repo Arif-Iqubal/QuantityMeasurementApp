@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 		@Index(name = "idx_created_at", columnList = "created_at") })
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class QuantityMeasurementEntity {
 
 	@Id
